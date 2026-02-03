@@ -48,17 +48,106 @@ App runs at `http://localhost:5173` and proxies `/api` to the backend.
 - Optional: `EMAIL_*` for Nodemailer (e.g. Ethereal for dev)
 - Optional: `QR_SECRET` for QR payload signing
 
-## Features
+## 🚀 Features
 
-- **Auth:** Register, login, JWT refresh, logout, role-based access
-- **Events:** CRUD, draft/published/completed, online/offline, max attendees
-- **Collaboration:** Invite by email, accept/reject, assign roles (manager/volunteer)
-- **Tasks:** Create/assign tasks, status (pending/in_progress/completed), due dates
-- **Attendees:** Public registration form, list, max limit, QR code per registration
-- **QR Check-in:** Encrypted QR per attendee, organizer check-in, no duplicate check-in
-- **Notifications:** In-app list, mark read; emails for invitation, registration, reminder (configure Nodemailer)
-- **Calendar:** FullCalendar with events and task deadlines (sync from API)
-- **Feedback:** Attendees submit rating (1–5) and comment; organizers see list and aggregated stats (Recharts)
+### 🔐 Authentication & Authorization
+
+- **Secure user registration and login**
+- **JWT-based authentication** using access and refresh tokens
+- **Password hashing** with bcrypt
+- **Role-Based Access Control (RBAC)** to protect routes and resources
+
+#### 👥 Supported Roles
+
+- **Organizer**
+- **Manager**
+- **Volunteer**
+- **Attendee**
+
+#### 🔒 Role Permissions
+
+| Role          | Permissions                                                                 |
+| ------------- | --------------------------------------------------------------------------- |
+| **Organizer** | Full control over events, create/update/delete events, manage collaborators |
+| **Manager**   | Assign and manage tasks, manage attendee registrations                      |
+| **Volunteer** | View and update only assigned tasks                                         |
+| **Attendee**  | Register for events, view event details, submit feedback                    |
+
+### 📅 Event Management
+
+- **Create, edit, and delete events**
+- **Event lifecycle management** with statuses:
+  - Draft
+  - Published
+  - Completed
+- **Event attributes** include:
+  - Title and description
+  - Date and time
+  - Location (online or offline)
+  - Maximum attendee limit
+- **Public event pages** for attendee discovery and registration
+
+### 🤝 Team Collaboration
+
+- **Invite collaborators** to events via email
+- **Accept or reject** event invitations
+- **Assign collaborator roles** (Organizer, Manager, Volunteer)
+- **View and manage** the collaborator list for each event
+
+### ✅ Task Management
+
+- **Create and manage tasks** within an event
+- **Assign tasks** to collaborators
+- **Track task progress** with statuses:
+  - Pending
+  - In Progress
+  - Completed
+- **Task properties** include:
+  - Title and description
+  - Assigned collaborator
+  - Due date
+- **Permission-based task updates** (volunteers can update only their tasks)
+
+### 🎟️ Attendee Registration
+
+- **Attendee registration form** for public events
+- **Automatic enforcement** of maximum attendee limits
+- **Organizer and Manager access** to attendee lists
+- **Secure attendee data storage**
+
+## 🚀 Advanced Features
+
+### 📧 Email & In-App Notifications
+
+- **Automated email notifications** using Nodemailer:
+  - Event invitations
+  - Registration confirmations
+  - Event reminders (24 hours before start)
+- **In-app notification system** with persistent storage and APIs
+
+### 🗓️ Calendar Integration
+
+- **Unified calendar view** using FullCalendar
+- **Displays**:
+  - Events the user is participating in
+  - Task deadlines
+- **Calendar data synced** dynamically from backend APIs
+
+### 📱 QR Code Check-In System
+
+- **Unique QR code generated** for each attendee upon registration
+- **QR code securely encodes** attendee and event information
+- **Organizer scans QR codes** to mark attendees as checked-in
+- **Duplicate check-ins** are automatically prevented
+
+### ⭐ Feedback & Ratings
+
+- **Attendees can submit feedback** after event completion
+- **Star-based rating system** (1–5)
+- **Optional textual feedback**
+- **Organizers can view**:
+  - Aggregated event ratings
+  - Detailed feedback lists for analysis
 
 ## API Overview
 
