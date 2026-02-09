@@ -4,7 +4,7 @@
   "description": "Production-ready MERN stack app for event collaboration: create events, invite collaborators, manage tasks, register attendees, QR check-in, feedback, and calendar view.",
   "main": "index.js",
   "scripts": {
-    "build": "npm instal --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm install --prefix backend && npm install --prefix frontend && npx vite build --prefix frontend",
     "start": "npm run start --prefix backend"
   },
   "keywords": [],
