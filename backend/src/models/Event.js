@@ -15,16 +15,24 @@ const eventSchema = new mongoose.Schema(
     maxAttendees: { type: Number, default: 0 },
     status: { type: String, enum: EVENT_STATUS, default: 'draft' },
     coverImage: { type: String, default: null },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     collaborators: [
       {
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        role: { type: String, enum: ['organizer', 'manager', 'volunteer'], default: 'volunteer' },
+        role: {
+          type: String,
+          enum: ['organizer', 'manager', 'volunteer'],
+          default: 'volunteer',
+        },
         joinedAt: { type: Date, default: Date.now },
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 eventSchema.index({ createdBy: 1, status: 1 });

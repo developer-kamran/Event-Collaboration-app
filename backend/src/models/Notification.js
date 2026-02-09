@@ -19,7 +19,7 @@ const notificationSchema = new mongoose.Schema(
     read: { type: Boolean, default: false },
     metadata: { type: mongoose.Schema.Types.Mixed, default: {} },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 notificationSchema.index({ user: 1, read: 1 });

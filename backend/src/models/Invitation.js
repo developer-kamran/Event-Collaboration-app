@@ -4,16 +4,32 @@ const INVITATION_STATUS = ['pending', 'accepted', 'rejected'];
 
 const invitationSchema = new mongoose.Schema(
   {
-    event: { type: mongoose.Schema.Types.ObjectId, ref: 'Event', required: true },
+    event: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event',
+      required: true,
+    },
     email: { type: String, required: true, lowercase: true },
-    role: { type: String, enum: ['manager', 'volunteer'], default: 'volunteer' },
-    invitedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    acceptedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
+    role: {
+      type: String,
+      enum: ['manager', 'volunteer'],
+      default: 'volunteer',
+    },
+    invitedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    acceptedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
     status: { type: String, enum: INVITATION_STATUS, default: 'pending' },
     token: { type: String, required: true, unique: true },
     expiresAt: { type: Date, required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 invitationSchema.index({ event: 1, email: 1 }, { unique: true });
