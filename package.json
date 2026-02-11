@@ -1,7 +1,7 @@
 {
   "name": "event-collaboration-app",
   "version": "1.0.0",
-  "description": "Production-ready MERN stack app for event collaboration: create events, invite collaborators, manage tasks, register attendees, QR check-in, feedback, and calendar view.",
+  "description": "MERN stack app for event collaboration: create events, invite collaborators, manage tasks, register attendees, QR check-in, feedback, and calendar view.",
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix backend && cd frontend && npm install && npx vite build",
